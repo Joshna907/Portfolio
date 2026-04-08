@@ -17,7 +17,7 @@ const playfair = Playfair_Display({
 });
 
 export const metadata: Metadata = {
-  title: "Jothsana | Full-Stack Developer",
+  title: "Jothsana",
   description: "Portfolio of Jothsana Waikar, a passionate Full-Stack Developer.",
 };
 

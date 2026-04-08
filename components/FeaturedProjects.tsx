@@ -11,7 +11,6 @@ const projects = [
     description: 'A disaster support platform for coordinated missing person tracking. Built using multicast DNS (mDNS).',
     repoUrl: 'https://github.com/Joshna907/Sahaay',
     video: '/videos/Sahaay.mp4',
-    image: 'https://images.unsplash.com/photo-1544161515-4ab6ce6db874?q=80&w=2670&auto=format&fit=crop',
     tag: 'Rescue Tech'
   },
   {
@@ -21,7 +20,6 @@ const projects = [
     liveUrl: 'https://focusift.onrender.com/',
     repoUrl: 'https://github.com/Joshna907/Focusift',
     video: '/videos/focusift.mp4',
-    image: '/images/Focusift.JPG',
     tag: 'Productivity'
   },
   {
@@ -31,7 +29,6 @@ const projects = [
     liveUrl: 'https://maid-finder-delta.vercel.app',
     repoUrl: 'https://github.com/Joshna907/maid-finder-project',
     video: '/videos/maidfinder.mp4',
-    image: '/images/Maidfinder.JPG',
     tag: 'Web3 / dApp'
   },
 ];
@@ -58,32 +55,21 @@ export default function FeaturedProjects() {
             }}
             className="group flex flex-col gap-6"
           >
-            {/* Visual Frame — Supports Image and Video */}
+            {/* Visual Frame — Video Walkthrough */}
             <div className="relative aspect-video overflow-hidden rounded-2xl border border-border-subtle bg-[#0a0a0a] shadow-2xl">
-              {project.video ? (
-                <video
-                  src={project.video}
-                  autoPlay
-                  loop
-                  muted
-                  playsInline
-                  poster={project.image}
-                  className="w-full h-full object-cover object-left-top transition-all duration-1000 group-hover:scale-[1.05]"
-                />
-              ) : (
-                <img
-                  src={project.image}
-                  alt={project.name}
-                  className="w-full h-full object-cover object-left-top transition-all duration-1000 group-hover:scale-[1.05]"
-                />
-              )}
+              <video
+                src={project.video}
+                autoPlay
+                loop
+                muted
+                playsInline
+                className="w-full h-full object-cover object-left-top transition-all duration-1000 group-hover:scale-[1.05]"
+              />
 
-              {/* Play Indicator for Video */}
-              {project.video && (
-                <div className="absolute top-4 right-4 p-2 bg-black/40 backdrop-blur-md rounded-full border border-white/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                  <TbPlayerPlay size={14} className="text-white/80" />
-                </div>
-              )}
+              {/* Play Indicator */}
+              <div className="absolute top-4 right-4 p-2 bg-black/40 backdrop-blur-md rounded-full border border-white/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                <TbPlayerPlay size={14} className="text-white/80" />
+              </div>
 
               <div className="absolute inset-0 bg-gradient-to-t from-background/20 via-transparent to-transparent pointer-events-none" />
             </div>

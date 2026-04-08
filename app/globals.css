@@ -1,0 +1,106 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+@import "shadcn/tailwind.css";
+
+:root {
+  /* Obsidian (Default Natural) */
+  --background: #000000;
+  --foreground: #ededed;
+  --accent-color: #ffffff;
+  --surface: #111111;
+  --surface-hover: #181818;
+  --border-subtle: rgba(255, 255, 255, 0.05);
+  --border-muted: rgba(255, 255, 255, 0.1);
+  --text-muted: #6b7280;
+  --text-secondary: #9ca3af;
+  --glow-opacity: 0.1;
+}
+
+[data-theme='sakura'] {
+  --background: #080305;
+  --foreground: #fff1f2;
+  --accent-color: #f472b6;
+  --surface: #1a0a0f;
+  --surface-hover: #2d131a;
+  --border-subtle: rgba(244, 114, 182, 0.08); /* Re-tinted for Pink */
+  --border-muted: rgba(244, 114, 182, 0.15);
+  --text-muted: #704d55;
+  --text-secondary: #9f7d85;
+  --glow-opacity: 0.15;
+}
+
+[data-theme='midday'] {
+  /* Ice/Sky Blue */
+  --background: #0c1b2a;
+  --foreground: #e0f2fe;
+  --accent-color: #7dd3fc;
+  --surface: #1e293b;
+  --surface-hover: #334155;
+  --border-subtle: rgba(125, 211, 252, 0.1);
+  --border-muted: rgba(125, 211, 252, 0.18);
+  --text-muted: #64748b;
+  --text-secondary: #94a3b8;
+  --glow-opacity: 0.2;
+}
+
+[data-theme='storm'] {
+  /* Natural Lightning */
+  --background: #09090b; /* Deep Zinc */
+  --foreground: #fafafa;
+  --accent-color: #e2e8f0; /* Pure Cloud White */
+  --surface: #18181b;
+  --surface-hover: #27272a;
+  --border-subtle: rgba(255, 255, 255, 0.05);
+  --border-muted: rgba(255, 255, 255, 0.12);
+  --text-muted: #71717a;
+  --text-secondary: #a1a1aa;
+  --glow-opacity: 0.1;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-accent-color: var(--accent-color);
+  --color-surface: var(--surface);
+  --color-surface-hover: var(--surface-hover);
+  --color-border-subtle: var(--border-subtle);
+  --color-border-muted: var(--border-muted);
+  --color-text-muted: var(--text-muted);
+  --color-text-secondary: var(--text-secondary);
+  
+  --animate-spotlight: spotlight 2s ease .75s 1 forwards;
+
+  @keyframes spotlight {
+    0% {
+      opacity: 0;
+      transform: translate(-72%, -62%) scale(0.5);
+    }
+    100% {
+      opacity: 1;
+      transform: translate(-50%,-40%) scale(1);
+    }
+  }
+}
+
+@layer base {
+  * {
+    box-sizing: border-box;
+    transition: background-color 0.3s ease, border-color 0.3s ease;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    background-color: var(--background);
+    color: var(--foreground);
+    @apply bg-background text-foreground;
+    transition: background-color 0.4s ease;
+  }
+
+  ::selection {
+    background-color: var(--accent-color);
+    color: var(--background);
+  }
+}

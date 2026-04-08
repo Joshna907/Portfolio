@@ -48,7 +48,7 @@ export default function GitHubContributions() {
       <div className="overflow-x-auto scrollbar-hidden">
         {/* Month labels */}
         <div className="flex gap-[3px] mb-1 ml-0" style={{ paddingLeft: 0 }}>
-          {MONTHS.map((month, i) => (
+          {MONTHS.map((month) => (
             <div
               key={month}
               className="text-[11px] text-[#6b7280]"

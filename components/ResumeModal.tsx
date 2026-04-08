@@ -2,7 +2,7 @@
 
 import { motion, AnimatePresence } from 'framer-motion';
 import { TbX, TbExternalLink } from 'react-icons/tb';
-import { SiNotion, SiLinkedin, SiGithub } from 'react-icons/si';
+import { SiLinkedin, SiGithub } from 'react-icons/si';
 
 interface ResumeModalProps {
   isOpen: boolean;

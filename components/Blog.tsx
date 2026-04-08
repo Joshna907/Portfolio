@@ -1,7 +1,7 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { TbExternalLink, TbCalendarDays, TbBook } from 'react-icons/tb';
+import { TbExternalLink, TbCalendar, TbBook } from 'react-icons/tb';
 
 const blogs = [
   {
@@ -55,7 +55,7 @@ export default function Blog() {
 
                 <div className="flex items-center gap-6 pt-2">
                   <div className="flex items-center gap-2 text-text-muted text-[11px] font-mono">
-                    <TbCalendarDays size={14} />
+                    <TbCalendar size={14} />
                     {blog.date}
                   </div>
                   <div className="flex items-center gap-2 text-text-muted text-[11px] font-mono">

@@ -82,7 +82,7 @@ export default function Navbar() {
 
   return (
     <>
-      <div className="fixed bottom-6 lg:bottom-10 left-1/2 -translate-x-1/2 z-50">
+      <div className="fixed bottom-4 sm:bottom-6 lg:bottom-10 left-1/2 -translate-x-1/2 z-50 w-[calc(100%-2rem)] sm:w-auto max-w-full">
         <motion.nav 
           initial={{ y: 80, opacity: 0, scale: 0.9 }}
           animate={{ y: 0, opacity: 1, scale: 1 }}
@@ -92,7 +92,7 @@ export default function Navbar() {
             damping: 20,
             delay: 0.4 
           }}
-          className="flex items-center gap-1 sm:gap-2 p-2 bg-white/[0.03] backdrop-blur-xl rounded-[24px] border border-white/10 shadow-[0_25px_50px_-12px_rgba(0,0,0,0.5),inset_0_1px_1px_rgba(255,255,255,0.05)]"
+          className="flex items-center justify-center gap-0.5 sm:gap-1 md:gap-2 p-1.5 sm:p-2 bg-white/[0.03] backdrop-blur-xl rounded-[20px] sm:rounded-[24px] border border-white/10 shadow-[0_25px_50px_-12px_rgba(0,0,0,0.5),inset_0_1px_1px_rgba(255,255,255,0.05)] overflow-x-auto scrollbar-hidden"
         >
           {navItems.map((item) => {
             const isActive = isResumeOpen ? (item.isModal) : (activeSection === item.id);
@@ -108,19 +108,20 @@ export default function Navbar() {
                   transition: { type: "spring", stiffness: 400, damping: 10 }
                 }}
                 whileTap={{ scale: 0.8 }}
-                className={`group relative p-3 rounded-2xl flex flex-col items-center justify-center cursor-pointer transition-all duration-500 ease-in-out ${
+                className={`group relative p-2 sm:p-2.5 md:p-3 rounded-xl sm:rounded-2xl flex flex-col items-center justify-center cursor-pointer transition-all duration-500 ease-in-out flex-shrink-0 ${
                   isActive ? 'text-[#fff] bg-white/[0.08] shadow-[inset_0_1px_1px_rgba(255,255,255,0.05)]' : 'text-[#a1a1aa] hover:text-[#fff]'
                 }`}
               >
                 <motion.div
                   animate={{ scale: isActive ? 1.1 : 1 }}
                   transition={{ type: "spring", stiffness: 300, damping: 20 }}
+                  className="[&>svg]:w-[18px] [&>svg]:h-[18px] sm:[&>svg]:w-[20px] sm:[&>svg]:h-[20px] md:[&>svg]:w-[22px] md:[&>svg]:h-[22px]"
                 >
                   {item.icon}
                 </motion.div>
 
                 {/* Active Indicator Dot */}
-                <div className="absolute -bottom-1.5 left-1/2 -translate-x-1/2 flex items-center justify-center pointer-events-none">
+                <div className="absolute -bottom-1 sm:-bottom-1.5 left-1/2 -translate-x-1/2 flex items-center justify-center pointer-events-none">
                   <AnimatePresence mode="wait">
                     {isActive && (
                       <motion.div
@@ -139,18 +140,18 @@ export default function Navbar() {
                   </AnimatePresence>
                 </div>
 
-                {/* Tooltip */}
-                <span className="absolute -top-14 opacity-0 group-hover:opacity-100 scale-90 group-hover:scale-100 transition-all duration-300 ease-[cubic-bezier(0.23,1,0.32,1)] origin-bottom bg-[#1a1a1a] text-[11px] font-medium text-[#fff] px-3 py-2 rounded-xl border border-white/10 shadow-2xl whitespace-nowrap pointer-events-none backdrop-blur-md">
+                {/* Tooltip — Hidden on mobile */}
+                <span className="hidden sm:block absolute -top-14 opacity-0 group-hover:opacity-100 scale-90 group-hover:scale-100 transition-all duration-300 ease-[cubic-bezier(0.23,1,0.32,1)] origin-bottom bg-[#1a1a1a] text-[11px] font-medium text-[#fff] px-3 py-2 rounded-xl border border-white/10 shadow-2xl whitespace-nowrap pointer-events-none backdrop-blur-md">
                   {item.label}
                 </span>
               </motion.a>
             );
           })}
 
-          {/* Faint Divider */}
-          <div className="w-[1px] h-8 bg-white/10 mx-2" />
+          {/* Faint Divider — Hidden on very small screens */}
+          <div className="hidden sm:block w-[1px] h-6 sm:h-8 bg-white/10 mx-1 sm:mx-2 flex-shrink-0" />
 
-          {/* Socials */}
+          {/* Socials — Hidden on mobile, visible from sm up */}
           {socialItems.map((social) => (
             <motion.a
               key={social.label}
@@ -163,7 +164,7 @@ export default function Navbar() {
                 transition: { type: "spring", stiffness: 400, damping: 10 }
               }}
               whileTap={{ scale: 0.8 }}
-              className="group relative p-3 text-[#a1a1aa] hover:text-[#fff] rounded-2xl flex items-center justify-center cursor-pointer transition-all duration-300"
+              className="hidden sm:flex group relative p-2 sm:p-2.5 md:p-3 text-[#a1a1aa] hover:text-[#fff] rounded-xl sm:rounded-2xl items-center justify-center cursor-pointer transition-all duration-300 flex-shrink-0"
             >
               {social.icon}
               

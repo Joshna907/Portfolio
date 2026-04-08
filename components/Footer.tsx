@@ -11,7 +11,7 @@ export default function Footer() {
 
   return (
     <footer className="py-8 pb-32 sm:pb-12">
-      <div className="max-w-6xl mx-auto px-6 flex flex-col sm:flex-row items-center justify-between gap-4">
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 flex flex-col sm:flex-row items-center justify-between gap-4">
         <p className="text-sm text-[#6b7280]">
           © {new Date().getFullYear()} Developed with {mounted ? <span className="text-red-500">♥</span> : ''} by Jothsana
         </p>

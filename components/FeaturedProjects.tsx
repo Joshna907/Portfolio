@@ -38,23 +38,23 @@ const projects = [
 
 export default function FeaturedProjects() {
   return (
-    <section id="projects" className="max-w-6xl mx-auto px-6 py-10">
+    <section id="projects" className="max-w-6xl mx-auto px-4 sm:px-6 py-8 sm:py-10">
       <div className="flex flex-col sm:flex-row justify-between items-baseline gap-4 mb-14">
         <h2 className="text-3xl md:text-4xl font-serif text-foreground">Featured Projects</h2>
         <p className="text-text-muted font-mono text-[10px] uppercase tracking-[0.25em]">Selected Works</p>
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-16">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-x-8 sm:gap-x-12 gap-y-10 sm:gap-y-16">
         {projects.map((project, i) => (
           <motion.div
             key={project.name}
             initial={{ opacity: 0, y: 50 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-100px" }}
-            transition={{ 
-              duration: 1, 
-              delay: i * 0.1, 
-              ease: [0.21, 0.45, 0.32, 0.9] 
+            transition={{
+              duration: 1,
+              delay: i * 0.1,
+              ease: [0.21, 0.45, 0.32, 0.9]
             }}
             className="group flex flex-col gap-6"
           >
@@ -77,7 +77,7 @@ export default function FeaturedProjects() {
                   className="w-full h-full object-cover object-left-top transition-all duration-1000 group-hover:scale-[1.05]"
                 />
               )}
-              
+
               {/* Play Indicator for Video */}
               {project.video && (
                 <div className="absolute top-4 right-4 p-2 bg-black/40 backdrop-blur-md rounded-full border border-white/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300">

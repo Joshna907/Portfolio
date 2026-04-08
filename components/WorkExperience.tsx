@@ -30,7 +30,7 @@ export default function WorkExperience() {
   const [expandedIndex, setExpandedIndex] = useState<number | null>(null);
 
   return (
-    <section id="experience" className="max-w-6xl mx-auto px-6 py-10">
+    <section id="experience" className="max-w-6xl mx-auto px-4 sm:px-6 py-8 sm:py-10">
       <div className="flex flex-col sm:flex-row justify-between items-baseline gap-4 mb-14">
         <h2 className="text-3xl md:text-4xl font-serif text-foreground">Experience</h2>
         <p className="text-text-muted font-mono text-[10px] uppercase tracking-[0.25em]">Professional Trajectory</p>

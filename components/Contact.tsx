@@ -33,12 +33,10 @@ export default function Contact() {
 
     setStatus('sending');
     
-    // Simulate API call for feedback
     setTimeout(() => {
       setStatus('sent');
       setForm({ name: '', phone: '', email: '', message: '' });
       
-      // Reset back to idle after a few seconds
       setTimeout(() => {
         setStatus('idle');
       }, 3000);
@@ -48,9 +46,9 @@ export default function Contact() {
   return (
     <section
       id="contact"
-      className="max-w-6xl mx-auto px-6 py-20"
+      className="max-w-6xl mx-auto px-4 sm:px-6 py-14 sm:py-20"
     >
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-16 items-start">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-10 sm:gap-16 items-start">
         {/* Left */}
         <motion.div
           initial={{ opacity: 0, y: 24 }}
@@ -59,7 +57,7 @@ export default function Contact() {
           transition={{ duration: 0.6 }}
           className="space-y-6"
         >
-          <h2 className="text-2xl font-medium text-white">Get in Touch</h2>
+          <h2 className="text-xl sm:text-2xl font-medium text-white">Get in Touch</h2>
           <p className="text-[#9ca3af] leading-relaxed text-sm">
             If you have any inquiries, please feel free to reach out. You can
             contact me via email at{' '}
@@ -97,7 +95,7 @@ export default function Contact() {
           transition={{ duration: 0.6, delay: 0.1 }}
           className="space-y-4"
         >
-          <div className="grid grid-cols-2 gap-3">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
             <Input
               name="name"
               placeholder="Full Name"
@@ -135,9 +133,9 @@ export default function Contact() {
           <Button
             type="submit"
             disabled={status !== 'idle'}
-            className="w-full bg-white text-black font-medium hover:bg-gray-100 transition-colors duration-200 rounded-sm disabled:opacity-50 disabled:cursor-not-allowed"
+            className="relative w-full py-3 text-[15px] font-semibold rounded-lg overflow-hidden transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed bg-gradient-to-b from-white via-white to-gray-200 text-black shadow-[0_1px_3px_rgba(0,0,0,0.3),inset_0_1px_0_rgba(255,255,255,0.9)] hover:shadow-[0_4px_16px_rgba(255,255,255,0.15),inset_0_1px_0_rgba(255,255,255,1)] hover:from-gray-50 hover:via-white hover:to-gray-100 active:from-gray-200 active:to-gray-300 before:absolute before:inset-0 before:bg-gradient-to-r before:from-transparent before:via-white/40 before:to-transparent before:translate-x-[-200%] hover:before:translate-x-[200%] before:transition-transform before:duration-700"
           >
-            {status === 'idle' ? 'Submit' : status === 'sending' ? 'Sending...' : 'Sent!'}
+            {status === 'idle' ? 'Submit' : status === 'sending' ? 'Sending...' : '✓ Sent!'}
           </Button>
         </motion.form>
       </div>

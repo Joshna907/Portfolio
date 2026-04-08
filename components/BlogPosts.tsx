@@ -26,18 +26,18 @@ const posts = [
 
 export default function BlogPosts() {
   return (
-    <section id="blogs" className="max-w-6xl mx-auto px-6 py-12 md:py-16">
+    <section id="blogs" className="max-w-6xl mx-auto px-4 sm:px-6 py-12 md:py-16">
       <motion.h2 
         initial={{ opacity: 0, x: -10 }}
         whileInView={{ opacity: 1, x: 0 }}
         viewport={{ once: true }}
         transition={{ duration: 0.6 }}
-        className="text-xl md:text-2xl font-serif text-foreground mb-12"
+        className="text-xl md:text-2xl font-serif text-foreground mb-10 sm:mb-12"
       >
         Most recent posts
       </motion.h2>
 
-      <div className="flex flex-col gap-12 md:gap-14">
+      <div className="flex flex-col gap-10 sm:gap-12 md:gap-14">
         {posts.map((post, idx) => (
           <motion.a
             key={post.url}
@@ -51,10 +51,10 @@ export default function BlogPosts() {
               delay: idx * 0.1,
               ease: "easeOut"
             }}
-            className="group flex gap-6 md:gap-10 items-start"
+            className="group flex flex-col sm:flex-row gap-4 sm:gap-6 md:gap-10 items-start"
           >
             {/* Thumbnail */}
-            <div className="shrink-0 w-24 h-16 md:w-44 md:h-28 rounded-lg overflow-hidden border border-border-subtle bg-surface/20">
+            <div className="shrink-0 w-full sm:w-24 h-40 sm:h-16 md:w-44 md:h-28 rounded-lg overflow-hidden border border-border-subtle bg-surface/20">
               <img
                 src={post.image}
                 alt={post.title}
@@ -64,7 +64,7 @@ export default function BlogPosts() {
 
             {/* Content */}
             <div className="flex flex-col gap-1.5 min-w-0">
-              <h3 className="text-[17px] md:text-[21px] font-medium text-foreground group-hover:text-accent-color transition-colors duration-300 leading-tight">
+              <h3 className="text-[16px] sm:text-[17px] md:text-[21px] font-medium text-foreground group-hover:text-accent-color transition-colors duration-300 leading-tight">
                 {post.title}
               </h3>
               
@@ -79,7 +79,7 @@ export default function BlogPosts() {
                 </div>
               </div>
 
-              <p className="text-text-muted/80 text-[14px] md:text-[15px] leading-relaxed max-w-2xl mt-0.5">
+              <p className="text-text-muted/80 text-[13px] sm:text-[14px] md:text-[15px] leading-relaxed max-w-2xl mt-0.5">
                 {post.excerpt}
               </p>
 

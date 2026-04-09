@@ -19,7 +19,7 @@ export default function Blog() {
   return (
     <section id="blogs" className="max-w-6xl mx-auto px-6 py-20 border-t border-white/5">
       <div className="flex flex-col sm:flex-row justify-between items-baseline gap-4 mb-12">
-        <h2 className="text-3xl md:text-4xl font-serif text-foreground">Writing</h2>
+        <h2 className="text-3xl md:text-4xl text-foreground">Writing</h2>
         <p className="text-[#6b7280] font-mono text-xs uppercase tracking-widest">Thought & Technical Rabbit Holes</p>
       </div>
 

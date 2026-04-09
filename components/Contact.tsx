@@ -47,38 +47,45 @@ export default function Contact() {
       id="contact"
       className="max-w-6xl mx-auto px-4 sm:px-6 py-14 sm:py-20"
     >
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-10 sm:gap-16 items-start">
+      <div className="flex flex-col sm:flex-row justify-between items-baseline gap-4 mb-16 sm:mb-20">
+        <h2 className="text-3xl md:text-5xl font-bold tracking-tighter text-white">Contact</h2>
+        <p className="text-text-muted font-mono text-[10px] uppercase tracking-[0.3em] font-bold opacity-70">Let&apos;s Build something</p>
+      </div>
+
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-12 sm:gap-20 items-start">
         {/* Left */}
         <motion.div
           initial={{ opacity: 0, y: 24 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="space-y-6"
+          className="space-y-8"
         >
-          <h2 className="text-xl sm:text-2xl font-medium text-white">Get in Touch</h2>
-          <p className="text-[#9ca3af] leading-relaxed text-sm">
-            If you have any inquiries, please feel free to reach out. You can
-            contact me via email at{' '}
-            <a
-              href="mailto:joshnawaikar@gmail.com"
-              className="text-white hover:underline underline-offset-4"
-            >
-              joshnawaikar@gmail.com
-            </a>
-          </p>
+          <div className="space-y-4">
+            <h3 className="text-2xl font-bold tracking-tight text-white leading-tight">Get in Touch</h3>
+            <p className="text-[#9ca3af] leading-relaxed text-sm max-w-sm opacity-90">
+              If you have any inquiries, please feel free to reach out. You can
+              contact me via email at{' '}
+              <a
+                href="mailto:joshnawaikar@gmail.com"
+                className="text-white hover:text-accent-color transition-colors font-medium border-b border-white/20 hover:border-accent-color/40 pb-0.5"
+              >
+                joshnawaikar@gmail.com
+              </a>
+            </p>
+          </div>
 
-          <div className="space-y-3">
-            <p className="text-sm text-[#6b7280]">Follow me</p>
-            <div className="flex flex-wrap gap-2">
+          <div className="space-y-4">
+            <p className="text-[10px] font-bold uppercase tracking-[0.2em] text-text-muted">Follow me</p>
+            <div className="flex flex-wrap gap-3">
               {socials.map(({ icon: Icon, href, label }) => (
                 <a
                   key={label}
                   href={href}
                   aria-label={label}
-                  className="w-10 h-10 flex items-center justify-center rounded-lg border border-white/10 text-[#9ca3af] hover:text-white hover:border-white/30 transition-all duration-200"
+                  className="w-12 h-12 flex items-center justify-center rounded-xl border border-white/5 bg-white/[0.02] text-[#9ca3af] hover:text-white hover:bg-white/[0.05] hover:border-white/20 transition-all duration-300"
                 >
-                  <Icon size={16} />
+                  <Icon size={18} />
                 </a>
               ))}
             </div>

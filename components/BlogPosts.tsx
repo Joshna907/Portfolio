@@ -26,18 +26,19 @@ const posts = [
 
 export default function BlogPosts() {
   return (
-    <section id="blogs" className="max-w-6xl mx-auto px-4 sm:px-6 py-12 md:py-16">
-      <motion.h2 
+    <section id="blogs" className="max-w-6xl mx-auto px-4 sm:px-6 py-12 md:py-20">
+      <motion.div
         initial={{ opacity: 0, x: -10 }}
         whileInView={{ opacity: 1, x: 0 }}
         viewport={{ once: true }}
         transition={{ duration: 0.6 }}
-        className="text-xl md:text-2xl font-serif text-foreground mb-10 sm:mb-12"
+        className="flex flex-col sm:flex-row justify-between items-baseline gap-4 mb-16 sm:mb-20"
       >
-        Most recent posts
-      </motion.h2>
+        <h2 className="text-3xl md:text-5xl font-bold tracking-tighter text-foreground">Writing</h2>
+        <p className="text-text-muted font-mono text-[10px] uppercase tracking-[0.3em] font-bold opacity-70">Deep Dives & Insights</p>
+      </motion.div>
 
-      <div className="flex flex-col gap-10 sm:gap-12 md:gap-14">
+      <div className="flex flex-col gap-12 sm:gap-16">
         {posts.map((post, idx) => (
           <motion.a
             key={post.url}
@@ -51,10 +52,10 @@ export default function BlogPosts() {
               delay: idx * 0.1,
               ease: "easeOut"
             }}
-            className="group flex flex-col sm:flex-row gap-4 sm:gap-6 md:gap-10 items-start"
+            className="group flex flex-col sm:flex-row gap-6 sm:gap-10 md:gap-14 items-start"
           >
             {/* Thumbnail */}
-            <div className="shrink-0 w-full sm:w-24 h-40 sm:h-16 md:w-44 md:h-28 rounded-lg overflow-hidden border border-border-subtle bg-surface/20">
+            <div className="shrink-0 w-full sm:w-32 h-44 sm:h-20 md:w-56 md:h-36 rounded-2xl overflow-hidden border border-border-subtle bg-surface/20 shadow-lg">
               <img
                 src={post.image}
                 alt={post.title}
@@ -63,12 +64,12 @@ export default function BlogPosts() {
             </div>
 
             {/* Content */}
-            <div className="flex flex-col gap-1.5 min-w-0">
-              <h3 className="text-[16px] sm:text-[17px] md:text-[21px] font-medium text-foreground group-hover:text-accent-color transition-colors duration-300 leading-tight">
+            <div className="flex flex-col gap-2 min-w-0">
+              <h3 className="text-[18px] sm:text-[20px] md:text-[24px] font-bold text-foreground group-hover:text-accent-color transition-colors duration-300 leading-[1.2] tracking-tight">
                 {post.title}
               </h3>
               
-              <div className="flex items-center gap-4 text-[10px] md:text-xs text-text-muted/60 lowercase">
+              <div className="flex items-center gap-5 text-[10px] md:text-[11px] text-accent-color/60 font-mono font-bold uppercase tracking-wider">
                 <div className="flex items-center gap-1.5">
                   <TbCalendar size={13} />
                   {post.date}
@@ -79,13 +80,13 @@ export default function BlogPosts() {
                 </div>
               </div>
 
-              <p className="text-text-muted/80 text-[13px] sm:text-[14px] md:text-[15px] leading-relaxed max-w-2xl mt-0.5">
+              <p className="text-text-muted/90 text-[14px] md:text-[15px] leading-relaxed max-w-2xl mt-1 opacity-80 font-light">
                 {post.excerpt}
               </p>
 
-              <div className="flex flex-wrap gap-x-4 gap-y-1 mt-1">
+              <div className="flex flex-wrap gap-x-4 gap-y-1 mt-2">
                 {post.tags.map((tag) => (
-                  <span key={tag} className="text-[11px] md:text-xs text-text-muted/60 font-mono tracking-tight">
+                  <span key={tag} className="text-[10px] md:text-[11px] text-text-muted/60 font-mono tracking-[0.1em] font-bold uppercase">
                     #{tag}
                   </span>
                 ))}

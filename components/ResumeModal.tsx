@@ -52,7 +52,7 @@ export default function ResumeModal({ isOpen, onClose }: ResumeModalProps) {
                 {/* Header Info */}
                 <div className="flex flex-col md:flex-row justify-between items-start gap-6 border-b border-white/5 pb-10">
                   <div>
-                    <h1 className="text-2xl sm:text-4xl font-serif text-[#ededed] mb-2 leading-tight">Jothsana Raosaheb Waikar</h1>
+                    <h1 className="text-2xl sm:text-4xl text-[#ededed] mb-2 leading-tight">Jothsana Raosaheb Waikar</h1>
                     <div className="flex flex-col sm:flex-row sm:items-center gap-x-4 gap-y-1 text-[#a1a1aa] font-mono text-xs sm:text-[13px]">
                       <p>joshnawaikar@gmail.com</p>
                       <span className="hidden sm:inline text-white/10">•</span>

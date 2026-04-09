@@ -4,7 +4,6 @@ import { useState } from 'react';
 import { motion } from 'framer-motion';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
-import { Button } from '@/components/ui/button';
 import {
   SiGithub,
   SiLinkedin,
@@ -130,13 +129,17 @@ export default function Contact() {
             required
             className="bg-transparent border-white/10 text-white placeholder:text-[#6b7280] focus-visible:ring-white/20 focus-visible:border-white/30 rounded-sm resize-none"
           />
-          <Button
+          <button
             type="submit"
             disabled={status !== 'idle'}
-            className="relative w-full py-3 text-[15px] font-semibold rounded-lg overflow-hidden transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed bg-gradient-to-b from-white via-white to-gray-200 text-black shadow-[0_1px_3px_rgba(0,0,0,0.3),inset_0_1px_0_rgba(255,255,255,0.9)] hover:shadow-[0_4px_16px_rgba(255,255,255,0.15),inset_0_1px_0_rgba(255,255,255,1)] hover:from-gray-50 hover:via-white hover:to-gray-100 active:from-gray-200 active:to-gray-300 before:absolute before:inset-0 before:bg-gradient-to-r before:from-transparent before:via-white/40 before:to-transparent before:translate-x-[-200%] hover:before:translate-x-[200%] before:transition-transform before:duration-700"
+            className="relative w-full h-12 text-[15px] font-semibold rounded-lg overflow-hidden transition-all duration-300 cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed bg-gradient-to-b from-white via-[#f8f8f8] to-[#e8e8e8] text-black shadow-[0_2px_8px_rgba(0,0,0,0.2),inset_0_1px_0_rgba(255,255,255,1)] hover:shadow-[0_4px_20px_rgba(255,255,255,0.15),inset_0_1px_0_rgba(255,255,255,1)] hover:from-white hover:via-white hover:to-[#f0f0f0] active:from-[#e0e0e0] active:to-[#d0d0d0] active:shadow-[inset_0_2px_4px_rgba(0,0,0,0.1)]"
           >
-            {status === 'idle' ? 'Submit' : status === 'sending' ? 'Sending...' : '✓ Sent!'}
-          </Button>
+            <span className="relative z-10">
+              {status === 'idle' ? 'Submit' : status === 'sending' ? 'Sending...' : '✓ Sent!'}
+            </span>
+            {/* Shine sweep */}
+            <span className="absolute inset-0 bg-gradient-to-r from-transparent via-white/60 to-transparent translate-x-[-200%] hover:translate-x-[200%] transition-transform duration-700 pointer-events-none" />
+          </button>
         </motion.form>
       </div>
     </section>

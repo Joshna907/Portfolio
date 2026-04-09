@@ -32,8 +32,8 @@ export default function WorkExperience() {
   return (
     <section id="experience" className="max-w-6xl mx-auto px-4 sm:px-6 py-8 sm:py-10">
       <div className="flex flex-col sm:flex-row justify-between items-baseline gap-4 mb-14">
-        <h2 className="text-3xl md:text-5xl font-bold tracking-tighter text-foreground">Experience</h2>
-        <p className="text-text-muted font-mono text-[10px] uppercase tracking-[0.3em] font-bold opacity-70">Professional Journey</p>
+        <h2 className="text-3xl md:text-4xl font-serif text-foreground">Experience</h2>
+        <p className="text-text-muted font-mono text-[10px] uppercase tracking-[0.25em]">Professional Trajectory</p>
       </div>
       
       <motion.div
@@ -66,15 +66,15 @@ export default function WorkExperience() {
                     <TbBuildingCommunity size={24} />
                   </div>
                   <div>
-                    <h3 className={`text-xl md:text-2xl font-bold tracking-tight transition-colors duration-500 ${isExpanded ? 'text-foreground' : 'text-text-secondary group-hover:text-foreground'}`}>
+                    <h3 className={`text-xl font-medium transition-colors duration-500 ${isExpanded ? 'text-foreground' : 'text-text-secondary group-hover:text-foreground'}`}>
                       {exp.company}
                     </h3>
-                    <p className="text-xs font-mono text-text-muted mt-1 uppercase tracking-widest font-bold opacity-80">{exp.role}</p>
+                    <p className="text-sm font-mono text-text-muted mt-0.5 tracking-wide">{exp.role}</p>
                   </div>
                 </div>
 
                 <div className="flex items-center justify-between md:justify-end gap-6">
-                  <span className="text-[11px] md:text-xs text-text-muted font-mono uppercase tracking-[0.2em] font-bold opacity-60">
+                  <span className="text-[12px] md:text-xs text-text-muted font-mono uppercase tracking-widest whitespace-nowrap">
                     {exp.period}
                   </span>
                   <motion.div

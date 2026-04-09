@@ -36,12 +36,12 @@ const projects = [
 export default function FeaturedProjects() {
   return (
     <section id="projects" className="max-w-6xl mx-auto px-4 sm:px-6 py-8 sm:py-10">
-      <div className="flex flex-col sm:flex-row justify-between items-baseline gap-4 mb-16 sm:mb-20">
-        <h2 className="text-3xl md:text-5xl font-bold tracking-tighter text-foreground">Projects</h2>
-        <p className="text-text-muted font-mono text-[10px] uppercase tracking-[0.3em] font-bold opacity-70">Crafted with Purpose</p>
+      <div className="flex flex-col sm:flex-row justify-between items-baseline gap-4 mb-14">
+        <h2 className="text-3xl md:text-4xl font-serif text-foreground">Featured Projects</h2>
+        <p className="text-text-muted font-mono text-[10px] uppercase tracking-[0.25em]">Selected Works</p>
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-x-10 sm:gap-x-16 gap-y-16 sm:gap-y-24">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-x-8 sm:gap-x-12 gap-y-10 sm:gap-y-16">
         {projects.map((project, i) => (
           <motion.div
             key={project.name}
@@ -53,17 +53,17 @@ export default function FeaturedProjects() {
               delay: i * 0.1,
               ease: [0.21, 0.45, 0.32, 0.9]
             }}
-            className="group flex flex-col gap-8"
+            className="group flex flex-col gap-6"
           >
             {/* Visual Frame — Video Walkthrough */}
-            <div className="relative aspect-video overflow-hidden rounded-2xl border border-border-subtle bg-[#0a0a0a] shadow-[0_32px_64px_-16px_rgba(0,0,0,0.6)]">
+            <div className="relative aspect-video overflow-hidden rounded-2xl border border-border-subtle bg-[#0a0a0a] shadow-2xl">
               <video
                 src={project.video}
                 autoPlay
                 loop
                 muted
                 playsInline
-                className="w-full h-full object-cover object-left-top transition-all duration-1000 group-hover:scale-[1.03]"
+                className="w-full h-full object-cover object-left-top transition-all duration-1000 group-hover:scale-[1.05]"
               />
 
               {/* Play Indicator */}
@@ -71,21 +71,21 @@ export default function FeaturedProjects() {
                 <TbPlayerPlay size={14} className="text-white/80" />
               </div>
 
-              <div className="absolute inset-0 bg-gradient-to-t from-background/40 via-transparent to-transparent pointer-events-none" />
+              <div className="absolute inset-0 bg-gradient-to-t from-background/20 via-transparent to-transparent pointer-events-none" />
             </div>
 
             {/* Info */}
-            <div className="space-y-5 px-1">
-              <div className="space-y-2">
-                <h3 className="text-2xl md:text-3xl font-bold text-foreground group-hover:text-accent-color transition-colors leading-[1.1] tracking-tight">
+            <div className="space-y-4 px-1">
+              <div className="space-y-1">
+                <h3 className="text-xl md:text-2xl font-serif text-foreground group-hover:text-accent-color transition-colors leading-tight">
                   {project.name}
                 </h3>
-                <p className="text-[10px] md:text-[11px] text-accent-color/80 font-mono uppercase tracking-[0.25em] font-bold">
+                <p className="text-[11px] md:text-xs text-[#a1a1aa] font-mono uppercase tracking-[0.2em]">
                   {project.tech}
                 </p>
               </div>
 
-              <p className="text-text-secondary text-[14px] md:text-[15px] leading-[1.7] font-light line-clamp-2 opacity-90">
+              <p className="text-text-secondary text-[14px] md:text-[15px] leading-relaxed font-light line-clamp-2">
                 {project.description}
               </p>
 

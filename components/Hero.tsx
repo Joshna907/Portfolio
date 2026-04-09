@@ -119,23 +119,22 @@ export default function Hero() {
           className="space-y-6 sm:space-y-8 mt-2 order-2 lg:order-1"
         >
           <div className="space-y-3 sm:space-y-4">
-            <h1 className="text-4xl sm:text-5xl md:text-[56px] font-bold tracking-tight text-foreground leading-[0.95]">
+            <h1 className="text-2xl sm:text-3xl md:text-[42px] font-serif tracking-tight text-foreground">
               Jothsana, 23
             </h1>
-            <p className="text-[15px] sm:text-[17px] md:text-[19px] text-text-secondary font-light leading-[1.6] max-w-xl">
+            <p className="text-[15px] sm:text-[17px] md:text-[20px] text-text-secondary font-light leading-[1.6] max-w-xl">
               I&apos;m a full-stack engineer who builds fast and actually cares about how things work under the hood.
             </p>
           </div>
 
-          <div className="space-y-4 sm:space-y-5 text-[14px] sm:text-[15px] md:text-[16px] text-text-secondary leading-[1.7] max-w-xl">
+          <div className="space-y-4 sm:space-y-6 text-[14px] sm:text-[15px] md:text-[17px] text-text-secondary leading-[1.7] max-w-xl">
             <p>
               I&apos;m a developer from Mumbai who loves building things that people use, whether it&apos;s websites, d-apps, or tools that solve real problems.
             </p>
-            <p className="text-foreground pt-1 sm:pt-2">
-              <span className="text-[10px] font-bold uppercase tracking-[0.2em] text-text-muted transition-colors mr-3">Available</span>
-              Full-Time or Freelance. <span 
+            <p className="text-foreground font-medium pt-1 sm:pt-2">
+              Open to Work: Full-Time or Freelance. <span 
                 onClick={scrollToContact}
-                className="font-bold underline decoration-accent-color/30 underline-offset-8 cursor-pointer hover:text-accent-color transition-colors"
+                className="underline decoration-text-secondary underline-offset-4 cursor-pointer hover:text-text-secondary transition-colors"
               >
                 Let&apos;s talk.
               </span>
@@ -188,7 +187,7 @@ export default function Hero() {
 
       {/* Tools — Infinite Scrolling Marquee */}
       <div id="tools" className="relative z-10 mt-6 lg:mt-10 max-w-6xl mx-auto px-4 sm:px-6 pb-2">
-        <h2 className="text-lg sm:text-xl md:text-[22px] text-foreground mb-6 sm:mb-8 text-center lg:text-left">Tools that I have used</h2>
+        <h2 className="text-lg sm:text-xl md:text-[22px] font-serif text-foreground mb-6 sm:mb-8 text-center lg:text-left">Tools that I have used</h2>
 
         <div className="space-y-1">
           <MarqueeRow tools={toolsRow1} direction="left" duration={90} />

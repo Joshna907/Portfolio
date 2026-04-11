@@ -1,18 +1,18 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import { motion } from 'framer-motion';
+import { motion, Variants } from 'framer-motion';
 import { TbPaint } from 'react-icons/tb';
 
 export const themes = [
-  { id: 'default', name: 'OBSIDIAN', color: '#ffffff' },
-  { id: 'storm', name: 'STORM', color: '#fafafa' },
-  { id: 'sakura', name: 'SAKURA', color: '#f472b6' },
+  { id: 'default', name: 'Dark', color: '#ffffff' },
+  { id: 'latte', name: 'Latte', color: '#f5e0dc' },
+  { id: 'frappe', name: 'Frappe', color: '#81c8be' },
   { id: 'midday', name: 'ICE', color: '#7dd3fc' },
 ];
 
 export function ThemeDots({ activeTheme, onThemeChange }: { activeTheme: string, onThemeChange: (id: string) => void }) {
-  const container = {
+  const container: Variants = {
     hidden: { opacity: 0 },
     show: {
       opacity: 1,
@@ -23,7 +23,7 @@ export function ThemeDots({ activeTheme, onThemeChange }: { activeTheme: string,
     }
   };
 
-  const item = {
+  const item: Variants = {
     hidden: { scale: 0, x: -10, rotate: -20 },
     show: { 
       scale: 1, 

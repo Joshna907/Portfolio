@@ -30,16 +30,52 @@ export default function Contact() {
     e.preventDefault();
     if (status !== 'idle') return;
 
+    // Simple validation
+    if (!form.name || !form.email || !form.message) {
+      alert('Please fill in all required fields.');
+      return;
+    }
+
     setStatus('sending');
     
-    setTimeout(() => {
-      setStatus('sent');
-      setForm({ name: '', phone: '', email: '', message: '' });
-      
-      setTimeout(() => {
+    try {
+      const response = await fetch('https://api.web3forms.com/submit', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          Accept: 'application/json',
+        },
+        body: JSON.stringify({
+          access_key: process.env.NEXT_PUBLIC_WEB3FORMS_ACCESS_KEY || 'c1284e2b-d51e-4340-a53f-56009b6f646f',
+          name: form.name,
+          email: form.email,
+          phone: form.phone,
+          message: form.message,
+          from_name: 'Portfolio Contact Form',
+          subject: `New Message from ${form.name}`,
+        }),
+      });
+
+      const result = await response.json();
+
+      if (result.success) {
+        setStatus('sent');
+        setForm({ name: '', phone: '', email: '', message: '' });
+        
+        // Reset to idle after 5 seconds
+        setTimeout(() => {
+          setStatus('idle');
+        }, 5000);
+      } else {
+        console.error('Submission failed:', result.message);
         setStatus('idle');
-      }, 3000);
-    }, 1500);
+        alert('Something went wrong. Please try again or email me directly.');
+      }
+    } catch (error) {
+      console.error('Error submitting form:', error);
+      setStatus('idle');
+      alert('Network error. Please check your connection and try again.');
+    }
   };
 
   return (
@@ -132,13 +168,33 @@ export default function Contact() {
           <button
             type="submit"
             disabled={status !== 'idle'}
-            className="relative w-full h-12 text-[15px] font-semibold rounded-lg overflow-hidden transition-all duration-300 cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed bg-gradient-to-b from-white via-[#f8f8f8] to-[#e8e8e8] text-black shadow-[0_2px_8px_rgba(0,0,0,0.2),inset_0_1px_0_rgba(255,255,255,1)] hover:shadow-[0_4px_20px_rgba(255,255,255,0.15),inset_0_1px_0_rgba(255,255,255,1)] hover:from-white hover:via-white hover:to-[#f0f0f0] active:from-[#e0e0e0] active:to-[#d0d0d0] active:shadow-[inset_0_2px_4px_rgba(0,0,0,0.1)]"
+            className={`group relative w-full h-12 text-[15px] font-bold rounded-xl overflow-hidden transition-all duration-500 cursor-pointer disabled:opacity-70 disabled:cursor-not-allowed ${
+              status === 'sent' 
+                ? 'bg-gradient-to-b from-green-400 to-green-600 text-white shadow-[0_0_20px_rgba(74,222,128,0.2)]' 
+                : 'bg-gradient-to-b from-white via-[#f8f8f8] to-[#e8e8e8] text-black shadow-[0_2px_8px_rgba(0,0,0,0.2),inset_0_1px_0_rgba(255,255,255,1)]'
+            }`}
           >
-            <span className="relative z-10">
-              {status === 'idle' ? 'Submit' : status === 'sending' ? 'Sending...' : '✓ Sent!'}
+            <span className="relative z-10 flex items-center justify-center gap-2">
+              {status === 'idle' && 'Submit'}
+              {status === 'sending' && (
+                <>
+                  <motion.div 
+                    animate={{ rotate: 360 }}
+                    transition={{ duration: 1, repeat: Infinity, ease: "linear" }}
+                    className="w-4 h-4 border-2 border-black/20 border-t-black rounded-full"
+                  />
+                  Sending...
+                </>
+              )}
+              {status === 'sent' && '✓ Sent!'}
             </span>
-            {/* Shine sweep */}
-            <span className="absolute inset-0 bg-gradient-to-r from-transparent via-white/60 to-transparent translate-x-[-200%] hover:translate-x-[200%] transition-transform duration-700 pointer-events-none" />
+            
+            {/* Real Shine sweep */}
+            <div className="absolute inset-0 z-0 translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-1000 ease-in-out bg-gradient-to-r from-transparent via-white/40 to-transparent pointer-events-none" />
+            
+            {!status && (
+              <div className="absolute inset-0 bg-white/5 opacity-0 group-hover:opacity-100 transition-opacity" />
+            )}
           </button>
         </motion.form>
       </div>

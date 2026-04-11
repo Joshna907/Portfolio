@@ -2,12 +2,17 @@
 
 import { motion, AnimatePresence } from 'framer-motion';
 import { useState } from 'react';
-import { TbChevronRight, TbBuildingCommunity } from 'react-icons/tb';
+import Image from 'next/image';
+import { TbChevronRight } from 'react-icons/tb';
 
 const experiences = [
   {
     role: 'Full Stack Developer Intern',
     company: 'Vessify',
+    logo: '/logos/vessify_logo.jpg',
+    logoFit: 'object-cover',
+    logoScale: 'scale-[1.25]',
+    logoBg: 'bg-[#121212]',
     period: 'Jan 2026 - April 2026',
     points: [
       'Working primarily on backend development, designing and implementing scalable APIs and server-side logic using Node.js.',
@@ -17,6 +22,10 @@ const experiences = [
   {
     role: 'Backend Developer Intern',
     company: 'Sunday Tech',
+    logo: '/logos/sundaytech_logo.jpg',
+    logoFit: 'object-contain',
+    logoScale: 'scale-[0.85]',
+    logoBg: 'bg-white',
     period: 'July 2024 - November 2024',
     points: [
       'Designed and developed RESTful APIs using Node.js and Express to support various application functionalities.',
@@ -35,7 +44,7 @@ export default function WorkExperience() {
         <h2 className="text-3xl md:text-4xl font-serif text-foreground">Experience</h2>
         <p className="text-text-muted font-mono text-[10px] uppercase tracking-[0.25em]">Professional Trajectory</p>
       </div>
-      
+
       <motion.div
         initial="hidden"
         whileInView="visible"
@@ -44,26 +53,30 @@ export default function WorkExperience() {
       >
         {experiences.map((exp, i) => {
           const isExpanded = expandedIndex === i;
-          
+
           return (
-            <motion.div 
-              key={i} 
+            <motion.div
+              key={i}
               initial={{ opacity: 0, x: -10 }}
               whileInView={{ opacity: 1, x: 0 }}
               transition={{ delay: i * 0.1 }}
-              className={`group relative p-6 md:p-8 rounded-3xl border transition-all duration-500 cursor-pointer ${
-                isExpanded 
-                  ? 'bg-surface/40 border-border-muted shadow-2xl backdrop-blur-sm' 
+              className={`group relative p-6 md:p-8 rounded-3xl border transition-all duration-500 cursor-pointer ${isExpanded
+                  ? 'bg-surface/40 border-border-muted shadow-2xl backdrop-blur-sm'
                   : 'bg-surface/5 border-transparent hover:bg-surface/10 hover:border-border-subtle'
-              }`}
+                }`}
               onClick={() => setExpandedIndex(isExpanded ? null : i)}
             >
               <div className="flex flex-col md:flex-row justify-between md:items-center gap-4">
                 <div className="flex items-center gap-5">
-                  <div className={`p-3 rounded-2xl border transition-all duration-500 ${
-                    isExpanded ? 'bg-accent-color/10 border-accent-color/20 text-accent-color' : 'bg-surface border-border-subtle text-text-muted'
+                  <div className={`relative w-12 h-12 rounded-full border flex-shrink-0 flex items-center justify-center overflow-hidden transition-all duration-500 ${exp.logoBg} ${
+                    isExpanded ? 'border-white/20' : 'border-border-subtle group-hover:border-white/10'
                   }`}>
-                    <TbBuildingCommunity size={24} />
+                    <Image 
+                      src={exp.logo} 
+                      alt={exp.company}
+                      fill
+                      className={`transition-all duration-500 ${exp.logoFit} ${exp.logoScale} ${isExpanded ? 'scale-[1.1]' : ''}`}
+                    />
                   </div>
                   <div>
                     <h3 className={`text-xl font-medium transition-colors duration-500 ${isExpanded ? 'text-foreground' : 'text-text-secondary group-hover:text-foreground'}`}>

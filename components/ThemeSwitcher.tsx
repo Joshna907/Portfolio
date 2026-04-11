@@ -1,14 +1,96 @@
 'use client';
 
 import { useState, useEffect } from 'react';
+import { motion } from 'framer-motion';
 import { TbPaint } from 'react-icons/tb';
 
-const themes = [
+export const themes = [
   { id: 'default', name: 'OBSIDIAN', color: '#ffffff' },
   { id: 'storm', name: 'STORM', color: '#fafafa' },
   { id: 'sakura', name: 'SAKURA', color: '#f472b6' },
   { id: 'midday', name: 'ICE', color: '#7dd3fc' },
 ];
+
+export function ThemeDots({ activeTheme, onThemeChange }: { activeTheme: string, onThemeChange: (id: string) => void }) {
+  const container = {
+    hidden: { opacity: 0 },
+    show: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.1,
+        delayChildren: 0.1,
+      }
+    }
+  };
+
+  const item = {
+    hidden: { scale: 0, x: -10, rotate: -20 },
+    show: { 
+      scale: 1, 
+      x: 0, 
+      rotate: 0,
+      transition: { type: "spring", stiffness: 400, damping: 20 }
+    }
+  };
+
+  return (
+    <motion.div 
+      variants={container}
+      initial="hidden"
+      animate="show"
+      className="flex items-center gap-3 md:gap-4 shrink-0 px-3 sm:px-4"
+    >
+      {themes.map((theme) => {
+        const isActive = activeTheme === theme.id;
+        return (
+          <motion.button
+            key={theme.id}
+            variants={item}
+            onClick={() => onThemeChange(theme.id)}
+            className="group relative flex items-center justify-center p-0.5 sm:p-1 outline-none"
+          >
+            <motion.div 
+              animate={{ 
+                scale: isActive ? 1.3 : 1, 
+                opacity: isActive ? 1 : 0.4,
+              }}
+              whileHover={{ 
+                scale: 1.5, 
+                opacity: 1,
+                rotate: 15,
+                transition: { type: "spring", stiffness: 500, damping: 12 }
+              }}
+              className={`w-3.5 h-3.5 sm:w-4 sm:h-4 rounded-full transition-all duration-500 cursor-pointer relative ${
+                isActive ? 'animate-pulse-subtle' : ''
+              }`}
+              style={{ 
+                backgroundColor: theme.color,
+                boxShadow: isActive ? `0 0 20px 5px ${theme.color}66` : 'none'
+              }} 
+            >
+              {isActive && (
+                <motion.div 
+                  layoutId="active-ring"
+                  className="absolute -inset-1.5 rounded-full border-2 border-foreground/30"
+                  transition={{ 
+                    type: "spring", 
+                    stiffness: 400, 
+                    damping: 18 
+                  }}
+                />
+              )}
+            </motion.div>
+            
+            {/* Tooltip */}
+            <span className="absolute -top-12 left-1/2 -translate-x-1/2 opacity-0 group-hover:opacity-100 transition-all duration-200 bg-[#1a1a1a] border border-white/10 text-[10px] px-2.5 py-1.5 rounded-xl whitespace-nowrap pointer-events-none uppercase tracking-widest text-foreground shadow-2xl z-[100] backdrop-blur-md">
+              {theme.name}
+            </span>
+          </motion.button>
+        );
+      })}
+    </motion.div>
+  );
+}
 
 export default function ThemeSwitcher() {
   const [activeTheme, setActiveTheme] = useState('default');
@@ -36,33 +118,7 @@ export default function ThemeSwitcher() {
         <span className="text-[10px] font-mono text-text-muted uppercase tracking-[0.25em] font-bold">THEME</span>
       </div>
       
-      <div className="flex items-center gap-4 shrink-0">
-        {themes.map((theme) => {
-          const isActive = activeTheme === theme.id;
-          return (
-            <button
-              key={theme.id}
-              onClick={() => changeTheme(theme.id)}
-              className="group relative flex items-center justify-center p-1"
-            >
-              <div 
-                className={`w-3.5 h-3.5 rounded-full transition-all duration-500 cursor-pointer ${
-                  isActive ? 'scale-125' : 'hover:scale-150 opacity-30 hover:opacity-100'
-                }`}
-                style={{ 
-                  backgroundColor: theme.color,
-                  boxShadow: isActive ? `0 0 16px 4px ${theme.color}` : 'none'
-                }} 
-              />
-              
-              {/* Tooltip */}
-              <span className="absolute -top-10 left-1/2 -translate-x-1/2 opacity-0 group-hover:opacity-100 transition-all duration-200 bg-surface border border-border-muted text-[10px] px-2.5 py-1 rounded-md whitespace-nowrap pointer-events-none uppercase tracking-tighter text-foreground shadow-2xl z-50">
-                {theme.name}
-              </span>
-            </button>
-          );
-        })}
-      </div>
+      <ThemeDots activeTheme={activeTheme} onThemeChange={changeTheme} />
     </div>
   );
 }

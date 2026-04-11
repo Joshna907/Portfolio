@@ -19,7 +19,7 @@ import {
   SiPrisma,
 } from 'react-icons/si';
 import { FaEthereum, FaWallet } from 'react-icons/fa';
-import ThemeSwitcher from './ThemeSwitcher';
+
 
 const toolsRow1 = [
   { icon: <SiHtml5 color="#E34F26" />, name: 'HTML' },
@@ -100,15 +100,7 @@ export default function Hero() {
 
   return (
     <section className="relative text-foreground py-6 sm:py-8 md:py-16 selection:bg-foreground selection:text-background min-h-screen overflow-hidden">
-      {/* Fixed Theme Controls */}
-      <motion.div
-        initial={{ opacity: 0, y: -20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.8, delay: 1 }}
-        className="fixed top-4 right-4 sm:top-6 sm:right-6 md:top-10 md:right-10 z-[200] scale-[0.75] sm:scale-[0.85] md:scale-100 origin-top-right"
-      >
-        <ThemeSwitcher />
-      </motion.div>
+
 
       <div className="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 grid grid-cols-1 lg:grid-cols-[1.2fr_0.8fr] gap-8 sm:gap-12 lg:gap-16 items-center">
         {/* Text Content */}

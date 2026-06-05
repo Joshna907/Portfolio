@@ -7,6 +7,20 @@ import { TbChevronRight } from 'react-icons/tb';
 
 const experiences = [
   {
+    role: 'LFX Open Source Mentee (The Linux Foundation)',
+    company: 'Microsoft Headlamp',
+    logo: '/logos/lfx_logo.jpg',
+    logoFit: 'object-contain',
+    logoScale: 'scale-[0.85]',
+    logoBg: 'bg-white',
+    period: 'Jun 2026 - Aug 2026',
+    points: [
+      'Selected for the LFX Mentorship Program 2026 Term 2 to contribute to Headlamp, Microsoft’s open-source Kubernetes UI project under CNCF.',
+      'Developing an Argo CD integration plugin using React and TypeScript to surface GitOps application status, health metrics, and deployment revisions.',
+      'Building Kubernetes resource navigation and contributing production-grade code through open-source reviews, testing, and documentation.',
+    ],
+  },
+  {
     role: 'Full Stack Developer Intern',
     company: 'Vessify',
     logo: '/logos/vessify_logo.jpg',

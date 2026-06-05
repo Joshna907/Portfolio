@@ -121,6 +121,19 @@ export default function ResumeModal({ isOpen, onClose }: ResumeModalProps) {
                   <div className="space-y-8 px-1">
                     <div>
                       <div className="flex flex-col sm:flex-row justify-between sm:items-baseline gap-2 mb-3">
+                        <h4 className="text-lg font-medium text-[#ededed]">Microsoft Headlamp</h4>
+                        <span className="text-xs font-mono text-[#6b7280]">Jun 2026 — Aug 2026</span>
+                      </div>
+                      <p className="text-sm text-[#a1a1aa] mb-3 font-mono">LFX Open Source Mentee (The Linux Foundation)</p>
+                      <ul className="space-y-2.5">
+                        <li className="text-[14px] text-[#9ca3af] flex gap-3"><span className="text-[#6b7280] mt-1.5 flex-shrink-0 text-[10px]">■</span> Selected for the LFX Mentorship Program 2026 Term 2 to contribute to Headlamp, Microsoft’s open-source Kubernetes UI project under CNCF.</li>
+                        <li className="text-[14px] text-[#9ca3af] flex gap-3"><span className="text-[#6b7280] mt-1.5 flex-shrink-0 text-[10px]">■</span> Developing an Argo CD integration plugin using React and TypeScript to surface GitOps application status, health metrics, and deployment revisions.</li>
+                        <li className="text-[14px] text-[#9ca3af] flex gap-3"><span className="text-[#6b7280] mt-1.5 flex-shrink-0 text-[10px]">■</span> Building Kubernetes resource navigation and contributing production-grade code through open-source reviews, testing, and documentation.</li>
+                      </ul>
+                    </div>
+
+                    <div>
+                      <div className="flex flex-col sm:flex-row justify-between sm:items-baseline gap-2 mb-3">
                         <h4 className="text-lg font-medium text-[#ededed]">Vessify</h4>
                         <span className="text-xs font-mono text-[#6b7280]">Jan 2026 — April 2026</span>
                       </div>

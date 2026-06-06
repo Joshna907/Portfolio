@@ -2,6 +2,7 @@
 
 import { motion } from 'framer-motion';
 import { TbCalendar, TbClock } from 'react-icons/tb';
+import Image from 'next/image';
 
 const posts = [
   {
@@ -54,11 +55,14 @@ export default function BlogPosts() {
             className="group flex flex-col sm:flex-row gap-4 sm:gap-6 md:gap-10 items-start"
           >
             {/* Thumbnail */}
-            <div className="shrink-0 w-full sm:w-24 h-40 sm:h-16 md:w-44 md:h-28 rounded-lg overflow-hidden border border-border-subtle bg-surface/20">
-              <img
+            <div className="relative shrink-0 w-full sm:w-24 h-40 sm:h-16 md:w-44 md:h-28 rounded-lg overflow-hidden border border-border-subtle bg-surface/20">
+              <Image
                 src={post.image}
                 alt={post.title}
-                className="w-full h-full object-cover transition-all duration-700 group-hover:scale-110"
+                fill
+                sizes="(max-width: 640px) 100vw, (max-width: 768px) 96px, 176px"
+                loading="lazy"
+                className="object-cover transition-all duration-700 group-hover:scale-110"
               />
             </div>
 

@@ -1,6 +1,7 @@
 'use client';
 
-import { motion } from 'framer-motion';
+import { motion, useInView } from 'framer-motion';
+import { useRef, useEffect, useState } from 'react';
 import { TbExternalLink, TbPlayerPlay } from 'react-icons/tb';
 import { VscGithub } from 'react-icons/vsc';
 
@@ -33,6 +34,41 @@ const projects = [
   },
 ];
 
+function LazyVideo({ src, className }: { src: string; className: string }) {
+  const ref = useRef<HTMLDivElement>(null);
+  const isInView = useInView(ref, { once: true, margin: '200px' });
+  const videoRef = useRef<HTMLVideoElement>(null);
+  const [isLoaded, setIsLoaded] = useState(false);
+
+  useEffect(() => {
+    if (isInView && videoRef.current) {
+      videoRef.current.src = src;
+      videoRef.current.load();
+    }
+  }, [isInView, src]);
+
+  return (
+    <div ref={ref} className="w-full h-full relative">
+      {/* Skeleton placeholder shown before video loads */}
+      {!isLoaded && (
+        <div className="absolute inset-0 bg-[#111] animate-pulse flex items-center justify-center">
+          <TbPlayerPlay size={32} className="text-white/20" />
+        </div>
+      )}
+      <video
+        ref={videoRef}
+        autoPlay
+        loop
+        muted
+        playsInline
+        preload="none"
+        onLoadedData={() => setIsLoaded(true)}
+        className={className}
+      />
+    </div>
+  );
+}
+
 export default function FeaturedProjects() {
   return (
     <section id="projects" className="max-w-6xl mx-auto px-4 sm:px-6 py-8 sm:py-10">
@@ -57,12 +93,8 @@ export default function FeaturedProjects() {
           >
             {/* Visual Frame — Video Walkthrough */}
             <div className="relative aspect-video overflow-hidden rounded-2xl border border-border-subtle bg-[#0a0a0a] shadow-2xl">
-              <video
+              <LazyVideo
                 src={project.video}
-                autoPlay
-                loop
-                muted
-                playsInline
                 className="w-full h-full object-cover object-left-top transition-all duration-1000 group-hover:scale-[1.05]"
               />
 

@@ -158,6 +158,8 @@ export default function Hero() {
                   src="/images/ghibli.png"
                   alt="Portrait"
                   fill
+                  sizes="(max-width: 640px) 260px, (max-width: 1024px) 320px, 380px"
+                  quality={75}
                   className="object-cover scale-105 group-hover:scale-100 transition-transform duration-700"
                   priority
                 />

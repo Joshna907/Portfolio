@@ -36,7 +36,7 @@ const projects = [
 
 function LazyVideo({ src, className }: { src: string; className: string }) {
   const ref = useRef<HTMLDivElement>(null);
-  const isInView = useInView(ref, { once: true, margin: '200px' });
+  const isInView = useInView(ref, { once: true, margin: '600px' });
   const videoRef = useRef<HTMLVideoElement>(null);
   const [isLoaded, setIsLoaded] = useState(false);
 
